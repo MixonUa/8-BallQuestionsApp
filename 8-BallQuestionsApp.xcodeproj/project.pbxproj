@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,9 +18,13 @@
 		934C5B2B27A7D61300B76B7F /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C5B2A27A7D61300B76B7F /* QuestionsViewController.swift */; };
 		934C5B3027A7EBF400B76B7F /* Answers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C5B2F27A7EBF400B76B7F /* Answers.swift */; };
 		934C5B3627A7F7D800B76B7F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C5B3527A7F7D800B76B7F /* DataManager.swift */; };
+		B4946CCB78B5D5053969E8F8 /* Pods_8_BallQuestionsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D349D205DF524FC3E0A9EB /* Pods_8_BallQuestionsApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28D349D205DF524FC3E0A9EB /* Pods_8_BallQuestionsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_8_BallQuestionsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		477037FFCE6515576ECC6E80 /* Pods-8-BallQuestionsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8-BallQuestionsApp.release.xcconfig"; path = "Target Support Files/Pods-8-BallQuestionsApp/Pods-8-BallQuestionsApp.release.xcconfig"; sourceTree = "<group>"; };
+		9330AAEE27C25D0700B686B1 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		934786EC27A93CB400F06D29 /* Magic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic.swift; sourceTree = "<group>"; };
 		934786F027A983E000F06D29 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		934C5B0027A7CEB200B76B7F /* 8-BallQuestionsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "8-BallQuestionsApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,6 +38,7 @@
 		934C5B2A27A7D61300B76B7F /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		934C5B2F27A7EBF400B76B7F /* Answers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answers.swift; sourceTree = "<group>"; };
 		934C5B3527A7F7D800B76B7F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DA945B025A034A29597A64A2 /* Pods-8-BallQuestionsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8-BallQuestionsApp.debug.xcconfig"; path = "Target Support Files/Pods-8-BallQuestionsApp/Pods-8-BallQuestionsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4946CCB78B5D5053969E8F8 /* Pods_8_BallQuestionsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +58,8 @@
 			children = (
 				934C5B0227A7CEB200B76B7F /* 8-BallQuestionsApp */,
 				934C5B0127A7CEB200B76B7F /* Products */,
+				C71523103EBAA7A5F5394A3B /* Pods */,
+				ED991F3DC81EAD704E5222A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +122,24 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		C71523103EBAA7A5F5394A3B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA945B025A034A29597A64A2 /* Pods-8-BallQuestionsApp.debug.xcconfig */,
+				477037FFCE6515576ECC6E80 /* Pods-8-BallQuestionsApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		ED991F3DC81EAD704E5222A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9330AAEE27C25D0700B686B1 /* Alamofire.framework */,
+				28D349D205DF524FC3E0A9EB /* Pods_8_BallQuestionsApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +147,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 934C5B1427A7CEB300B76B7F /* Build configuration list for PBXNativeTarget "8-BallQuestionsApp" */;
 			buildPhases = (
+				CFCA8828EE0B8C60C4F77CEE /* [CP] Check Pods Manifest.lock */,
 				934C5AFC27A7CEB200B76B7F /* Sources */,
 				934C5AFD27A7CEB200B76B7F /* Frameworks */,
 				934C5AFE27A7CEB200B76B7F /* Resources */,
+				22DD4D2E91196D0AEC01ABE8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,6 +206,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22DD4D2E91196D0AEC01ABE8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-8-BallQuestionsApp/Pods-8-BallQuestionsApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-8-BallQuestionsApp/Pods-8-BallQuestionsApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-8-BallQuestionsApp/Pods-8-BallQuestionsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFCA8828EE0B8C60C4F77CEE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-8-BallQuestionsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		934C5AFC27A7CEB200B76B7F /* Sources */ = {
@@ -335,6 +405,7 @@
 		};
 		934C5B1527A7CEB300B76B7F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA945B025A034A29597A64A2 /* Pods-8-BallQuestionsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -353,6 +424,7 @@
 		};
 		934C5B1627A7CEB300B76B7F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 477037FFCE6515576ECC6E80 /* Pods-8-BallQuestionsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
