@@ -1,0 +1,6 @@
+framework module Pods_8_BallQuestionsApp {
+  umbrella header "Pods-8-BallQuestionsApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
