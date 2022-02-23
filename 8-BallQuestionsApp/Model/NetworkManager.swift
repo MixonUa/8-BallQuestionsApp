@@ -10,19 +10,9 @@ protocol NetworkDataProvider {
     func cancelCurrentTask()
 }
 
-protocol NetworkDataProviderInjectable {
-func setNetworkDataProvider(_ networkDataProvider: NetworkDataProvider)
-}
-
 class NetworkManager: NetworkDataProvider {
-    let networkDataProvider: NetworkDataProvider
-    
     private let session = URLSession.shared
     private var currentTask: URLSessionTask?
-    
-    init(networkDataProvider: NetworkDataProvider) {
-        self.networkDataProvider = networkDataProvider
-    }
     
     func performTask(with question: String, completion: @escaping (Magic?, Error?) -> Void) {
         let urlString = "https://8ball.delegator.com/magic/JSON/" + question
@@ -48,5 +38,36 @@ class NetworkManager: NetworkDataProvider {
     func cancelCurrentTask() {
         currentTask?.cancel()
         currentTask = nil
+    }
+}
+
+class NetworkService {
+    let networkDataProvider: NetworkDataProvider
+    var answer: Answers = Answers(retrievedAnswer: nil, standardAnswer: DataManager.instance.standardAnswer)
+    
+    init(networkDataProvider: NetworkDataProvider = NetworkManager()) {
+        self.networkDataProvider = networkDataProvider
+    }
+    
+    func updateAnswer(retrievedAnswer: String) {
+        self.answer.retrievedAnswer = retrievedAnswer
+    }
+    
+    func getAnswer(question: String) {
+        networkDataProvider.performTask(with: question) { [weak self] (item, error) in
+            guard error == nil else {
+                self?.answer = Answers(retrievedAnswer: nil, standardAnswer: DataManager.instance.standardAnswer)
+                return
+            }
+            guard let item = item else {
+                self?.answer = Answers(retrievedAnswer: nil, standardAnswer: DataManager.instance.standardAnswer)
+                return
+            }
+            self?.answer = Answers(retrievedAnswer: item.magic.answer, standardAnswer: DataManager.instance.standardAnswer)
+        }
+    }
+    
+    func stopTask() {
+        networkDataProvider.cancelCurrentTask()
     }
 }

@@ -1,17 +1,14 @@
 
 import UIKit
 
-class QuestionsViewController: UIViewController, NetworkDataProviderInjectable {
+class QuestionsViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var noInternetConnectionLabel: UILabel!
     @IBOutlet weak var questionInputField: UITextField!
     var userQuestion: String = ""
     
-    private var networkManager: NetworkDataProvider!
-    func setNetworkDataProvider(_ networkDataProvider: NetworkDataProvider) {
-        self.networkManager = networkDataProvider
-    }
+    let networkManager = NetworkService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +26,15 @@ class QuestionsViewController: UIViewController, NetworkDataProviderInjectable {
             guard let question = questionInputField.text, !question.isEmpty else { return }
             userQuestion = question
             let clearQuestion = String(userQuestion.filter {$0 != " "})
-            networkManager.performTask(with: clearQuestion) { [weak self] (item, error) in
-                guard error == nil else {
-                    let answer = Answers(retrievedAnswer: nil, standardAnswer: DataManager.instance.standardAnswer)
-                    self?.updateUI(answer: answer)
-                    return
-                }
-                
-                guard let item = item else {
-                    let answer = Answers(retrievedAnswer: nil, standardAnswer: DataManager.instance.standardAnswer)
-                    self?.updateUI(answer: answer)
-                    return
-                }
-                
-                let answer = Answers(retrievedAnswer: item.magic.answer, standardAnswer: DataManager.instance.standardAnswer)
-                self?.updateUI(answer: answer)
+            networkManager.getAnswer(question: clearQuestion)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+                self.updateUI(answer: self.networkManager.answer)
             }
         }
     }
         
     override func motionCancelled(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        networkManager.cancelCurrentTask()
+        networkManager.stopTask()
     }
     
     private func updateUI(answer: Answers) {
