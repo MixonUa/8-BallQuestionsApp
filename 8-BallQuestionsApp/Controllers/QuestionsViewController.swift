@@ -1,14 +1,17 @@
 
 import UIKit
 
-class QuestionsViewController: UIViewController {
+class QuestionsViewController: UIViewController, NetworkDataProviderInjectable {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var noInternetConnectionLabel: UILabel!
     @IBOutlet weak var questionInputField: UITextField!
     var userQuestion: String = ""
     
-    private let networkManager = NetworkManager.shared
+    private var networkManager: NetworkDataProvider!
+    func setNetworkDataProvider(_ networkDataProvider: NetworkDataProvider) {
+        self.networkManager = networkDataProvider
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

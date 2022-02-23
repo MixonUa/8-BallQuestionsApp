@@ -5,13 +5,24 @@ enum NetworkingError: Error {
     case malformedUrl
 }
 
-final class NetworkManager {
-    static let shared = NetworkManager()
+protocol NetworkDataProvider {
+    func performTask(with question: String, completion: @escaping (Magic?, Error?) -> Void)
+    func cancelCurrentTask()
+}
+
+protocol NetworkDataProviderInjectable {
+func setNetworkDataProvider(_ networkDataProvider: NetworkDataProvider)
+}
+
+class NetworkManager: NetworkDataProvider {
+    let networkDataProvider: NetworkDataProvider
     
     private let session = URLSession.shared
     private var currentTask: URLSessionTask?
     
-    private init() {}
+    init(networkDataProvider: NetworkDataProvider) {
+        self.networkDataProvider = networkDataProvider
+    }
     
     func performTask(with question: String, completion: @escaping (Magic?, Error?) -> Void) {
         let urlString = "https://8ball.delegator.com/magic/JSON/" + question
